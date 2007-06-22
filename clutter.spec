@@ -18,6 +18,9 @@ Url:           http://clutter-project.org/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: X11-devel
 BuildRequires: GL-devel
+BuildRequires: pango-devel
+BuildRequires: glib2-devel
+BuildRequires: libgdk_pixbuf2.0-devel
 BuildRequires: gtk-doc
 
 %description
