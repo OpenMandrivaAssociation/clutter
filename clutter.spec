@@ -1,8 +1,13 @@
 %define name clutter
-%define version 0.2.3
+%define version 0.4.0
+%define svn 0
+%if %svn
+%define release %mkrel 0.%svn.1
+%else
 %define release %mkrel 1
+%endif
 
-%define api 0.2
+%define api 0.4
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedevel %mklibname -d %name %api
@@ -11,7 +16,11 @@ Summary:       Software library for fast, visually rich GUIs
 Name:          %{name}
 Version:       %{version}
 Release:       %{release}
+%if %svn
+Source0:       %{name}-%{svn}.tar.bz2
+%else
 Source0:       %{name}-%{version}.tar.bz2
+%endif
 License:       LGPL
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -47,8 +56,11 @@ Clutter uses OpenGL (and soon optionally OpenGL ES) for rendering but with an
 API which hides the underlying GL complexity from the developer. The Clutter
 API is intended to be easy to use, efficient and flexible. 
 
-%post -n %libname -p /sbin/ldconfig
-%postun -n %libname -p /sbin/ldconfig
+%post -n %libname
+/sbin/ldconfig
+
+%postun -n %libname
+/sbin/ldconfig
 
 #----------------------------------------------------------------------------
 
@@ -64,10 +76,15 @@ Development headers/libraries for %name (see %libname package)
 #----------------------------------------------------------------------------
 
 %prep
+%if %svn
+%setup -q -n %name
+./autogen.sh -V
+%else
 %setup -q
+%endif
 
 %build
-%configure --enable-gtk-doc
+%configure
 %make
 
 %install
@@ -80,12 +97,13 @@ rm -rf %buildroot
 
 %files -n %libname
 %defattr(-,root,root)
-%_libdir/lib%{name}-%{api}.so.*
+%_libdir/lib%{name}-glx-%{api}.so.*
 
 %files -n %libnamedevel
 %_libdir/pkgconfig/%{name}-%{api}.pc
-%_libdir/lib%{name}-%{api}.la
-%_libdir/lib%{name}-%{api}.so
+%_libdir/pkgconfig/%{name}-glx-%{api}.pc
+%_libdir/lib%{name}-glx-%{api}.la
+%_libdir/lib%{name}-glx-%{api}.so
 %dir %_includedir/%{name}-%{api}
 %dir %_includedir/%{name}-%{api}/%{name}
 %_includedir/%{name}-%{api}/%{name}/*.h
