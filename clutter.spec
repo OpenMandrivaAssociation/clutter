@@ -1,5 +1,5 @@
 %define name clutter
-%define version 0.4.1
+%define version 0.6.0
 %define svn 0
 %if %svn
 %define release %mkrel 0.%svn.1
@@ -7,7 +7,7 @@
 %define release %mkrel 1
 %endif
 
-%define api 0.4
+%define api 0.6
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedevel %mklibname -d %name %api
@@ -102,10 +102,10 @@ rm -rf %buildroot
 %files -n %libnamedevel
 %_libdir/pkgconfig/%{name}-%{api}.pc
 %_libdir/pkgconfig/%{name}-glx-%{api}.pc
+%_libdir/pkgconfig/%{name}-x11-%{api}.pc
 %_libdir/lib%{name}-glx-%{api}.la
 %_libdir/lib%{name}-glx-%{api}.so
 %dir %_includedir/%{name}-%{api}
-%dir %_includedir/%{name}-%{api}/%{name}
-%_includedir/%{name}-%{api}/%{name}/*.h
+%_includedir/%{name}-%{api}/%{name}
 %dir %_datadir/gtk-doc/html/%name
 %doc %_datadir/gtk-doc/html/%name/*
