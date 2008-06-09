@@ -56,10 +56,14 @@ Clutter uses OpenGL (and soon optionally OpenGL ES) for rendering but with an
 API which hides the underlying GL complexity from the developer. The Clutter
 API is intended to be easy to use, efficient and flexible. 
 
+%if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
+%endif
 
 %postun -n %libname
+%if %mdkversion < 200900
 /sbin/ldconfig
+%endif
 
 #----------------------------------------------------------------------------
 
