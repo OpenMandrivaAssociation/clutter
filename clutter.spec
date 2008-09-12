@@ -1,16 +1,19 @@
 %define name clutter
-%define version 0.6.0
+%define version 0.8.0
 %define svn 0
 %if %svn
 %define release %mkrel 0.%svn.1
 %else
-%define release %mkrel 3
+%define release %mkrel 1
 %endif
 
-%define api 0.6
+%define api 0.8
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedevel %mklibname -d %name %api
+
+# (cg) Do this for now, but fix propperly later.
+%define _disable_ld_no_undefined 1
 
 Summary:       Software library for fast, visually rich GUIs
 Name:          %{name}
@@ -21,6 +24,7 @@ Source0:       %{name}-%{svn}.tar.bz2
 %else
 Source0:       %{name}-%{version}.tar.bz2
 %endif
+Patch0:        %{name}-0.8.0-inlines.patch
 License:       LGPL
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -31,6 +35,7 @@ BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
 BuildRequires: gtk-doc
+BuildConflicts: %{name}-devel < %{version}
 
 %description
 Clutter is an open source software library for creating fast, visually rich
@@ -85,6 +90,8 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
+%patch0 -p1 -b .inlines
+
 
 %build
 %configure
@@ -110,5 +117,6 @@ rm -rf %buildroot
 %_libdir/lib%{name}-glx-%{api}.so
 %dir %_includedir/%{name}-%{api}
 %_includedir/%{name}-%{api}/%{name}
-%dir %_datadir/gtk-doc/html/%name
-%doc %_datadir/gtk-doc/html/%name/*
+%_includedir/%{name}-%{api}/cogl
+#%dir %_datadir/gtk-doc/html/%name
+#%doc %_datadir/gtk-doc/html/%name/*
