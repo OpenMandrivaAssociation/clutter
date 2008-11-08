@@ -1,10 +1,10 @@
 %define name clutter
-%define version 0.8.0
+%define version 0.8.2
 %define svn 0
 %if %svn
 %define release %mkrel 0.%svn.1
 %else
-%define release %mkrel 2
+%define release %mkrel 1
 %endif
 
 %define api 0.8
@@ -24,7 +24,7 @@ Source0:       %{name}-%{svn}.tar.bz2
 %else
 Source0:       %{name}-%{version}.tar.bz2
 %endif
-Patch0:        %{name}-0.8.0-inlines.patch
+Patch0: clutter-0.8.2-bug1201.diff
 License:       LGPL
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -90,8 +90,8 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
-%patch0 -p1 -b .inlines
 
+%patch0 -p0
 
 %build
 %configure
@@ -118,5 +118,7 @@ rm -rf %buildroot
 %dir %_includedir/%{name}-%{api}
 %_includedir/%{name}-%{api}/%{name}
 %_includedir/%{name}-%{api}/cogl
-#%dir %_datadir/gtk-doc/html/%name
-#%doc %_datadir/gtk-doc/html/%name/*
+%dir %_datadir/gtk-doc/html/%name
+%doc %_datadir/gtk-doc/html/%name/*
+%dir %_datadir/gtk-doc/html/cogl
+%doc %_datadir/gtk-doc/html/cogl/*
