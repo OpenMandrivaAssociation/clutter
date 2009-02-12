@@ -1,5 +1,5 @@
 %define name clutter
-%define version 0.8.2
+%define version 0.8.6
 %define svn 0
 %if %svn
 %define release %mkrel 0.%svn.1
@@ -22,10 +22,10 @@ Release:       %{release}
 %if %svn
 Source0:       %{name}-%{svn}.tar.bz2
 %else
-Source0:       %{name}-%{version}.tar.bz2
+Source0:       http://www.clutter-project.org/sources/clutter/0.8/%{name}-%{version}.tar.bz2
 %endif
-Patch0: clutter-0.8.2-bug1201.diff
-License:       LGPL
+Patch1:	       clutter-0.8.6-fix-str-fmt.patch
+License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -90,17 +90,16 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
-
-%patch0 -p0
+%patch1 -p0
 
 %build
-%configure
+%configure2_5x
 %make
 
 %install
 rm -rf %buildroot
 
-%makeinstall
+%makeinstall_std
 
 %clean
 rm -rf %buildroot
