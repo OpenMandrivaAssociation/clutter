@@ -1,8 +1,8 @@
 %define name clutter
-%define version 0.8.6
-%define svn 0
-%if %svn
-%define release %mkrel 0.%svn.1
+%define version 0.8.7
+%define git 20090218
+%if %git
+%define release %mkrel 0.%git.1
 %else
 %define release %mkrel 1
 %endif
@@ -12,15 +12,12 @@
 %define libname %mklibname %name %api %major
 %define libnamedevel %mklibname -d %name %api
 
-# (cg) Do this for now, but fix propperly later.
-%define _disable_ld_no_undefined 1
-
 Summary:       Software library for fast, visually rich GUIs
 Name:          %{name}
 Version:       %{version}
 Release:       %{release}
-%if %svn
-Source0:       %{name}-%{svn}.tar.bz2
+%if %git
+Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/0.8/%{name}-%{version}.tar.bz2
 %endif
@@ -84,7 +81,7 @@ Development headers/libraries for %name (see %libname package)
 #----------------------------------------------------------------------------
 
 %prep
-%if %svn
+%if %git
 %setup -q -n %name
 ./autogen.sh -V
 %else
@@ -93,7 +90,7 @@ Development headers/libraries for %name (see %libname package)
 %patch1 -p0
 
 %build
-%configure2_5x
+%configure2_5x --enable-gtk-doc
 %make
 
 %install
