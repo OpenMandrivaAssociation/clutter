@@ -1,6 +1,6 @@
 %define name clutter
-%define version 0.8.7
-%define git 20090218
+%define version 0.8.8
+%define git 0
 %if %git
 %define release %mkrel 0.%git.1
 %else
@@ -19,7 +19,7 @@ Release:       %{release}
 %if %git
 Source0:       %{name}-%{git}.tar.bz2
 %else
-Source0:       http://www.clutter-project.org/sources/clutter/0.8/%{name}-%{version}.tar.bz2
+Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
 Patch1:	       clutter-0.8.6-fix-str-fmt.patch
 License:       LGPLv2+
@@ -90,6 +90,7 @@ Development headers/libraries for %name (see %libname package)
 %patch1 -p0
 
 %build
+%define _disable_ld_no_undefined 1
 %configure2_5x --enable-gtk-doc
 %make
 
