@@ -1,5 +1,5 @@
 %define name clutter
-%define version 0.8.8
+%define version 0.9.2
 %define git 0
 %if %git
 %define release %mkrel 0.%git.1
@@ -7,7 +7,7 @@
 %define release %mkrel 1
 %endif
 
-%define api 0.8
+%define api 0.9
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedevel %mklibname -d %name %api
@@ -21,7 +21,6 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
-Patch1:	       clutter-0.8.6-fix-str-fmt.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -87,10 +86,10 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
-%patch1 -p0
 
 %build
 %define _disable_ld_no_undefined 1
+%define _disable_ld_as_needed 1
 %configure2_5x --enable-gtk-doc
 %make
 
@@ -107,6 +106,8 @@ rm -rf %buildroot
 %_libdir/lib%{name}-glx-%{api}.so.*
 
 %files -n %libnamedevel
+%_libdir/pkgconfig/cogl-%{api}.pc
+%_libdir/pkgconfig/cogl-gl-%{api}.pc
 %_libdir/pkgconfig/%{name}-%{api}.pc
 %_libdir/pkgconfig/%{name}-glx-%{api}.pc
 %_libdir/pkgconfig/%{name}-x11-%{api}.pc
