@@ -1,6 +1,6 @@
 %define name clutter
-%define version 0.9.2
-%define git 0
+%define version 0.9.3
+%define git 20090511
 %if %git
 %define release %mkrel 0.%git.1
 %else
