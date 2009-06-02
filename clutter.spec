@@ -1,6 +1,6 @@
 %define name clutter
 %define version 0.9.3
-%define git 20090511
+%define git 20090602
 %if %git
 %define release %mkrel 0.%git.1
 %else
@@ -21,6 +21,7 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
+Patch:	clutter-remove-double-header.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -30,6 +31,9 @@ BuildRequires: GL-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
+BuildRequires: gobject-introspection-devel
+#gw for Pango-1.0.gir
+BuildRequires: gir-repository
 BuildRequires: gtk-doc
 BuildConflicts: %{name}-devel < %{version}
 
@@ -86,12 +90,14 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
+%patch -p1
 
 %build
 %define _disable_ld_no_undefined 1
 %define _disable_ld_as_needed 1
 %configure2_5x --enable-gtk-doc
-%make
+#git from 20090602 does not work with parallel make
+make
 
 %install
 rm -rf %buildroot
@@ -116,6 +122,12 @@ rm -rf %buildroot
 %dir %_includedir/%{name}-%{api}
 %_includedir/%{name}-%{api}/%{name}
 %_includedir/%{name}-%{api}/cogl
+%_datadir/gir-1.0/Clutter-%api.gir
+%_datadir/gir-1.0/ClutterJson-%api.gir
+%_datadir/gir-1.0/Cogl-%api.gir
+%_libdir/girepository-1.0/Clutter-%api.typelib
+%_libdir/girepository-1.0/ClutterJson-%api.typelib
+%_libdir/girepository-1.0/Cogl-%api.typelib
 %dir %_datadir/gtk-doc/html/%name
 %doc %_datadir/gtk-doc/html/%name/*
 %dir %_datadir/gtk-doc/html/cogl
