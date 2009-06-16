@@ -30,7 +30,7 @@ BuildRequires: GL-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
-BuildRequires: gobject-introspection-devel >= 0.9.3-0.20090616
+BuildRequires: gobject-introspection-devel >= 0.6.3-0.20090616
 #gw for Pango-1.0.gir
 BuildRequires: gir-repository
 BuildRequires: gtk-doc
