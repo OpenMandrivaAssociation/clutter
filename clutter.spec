@@ -1,6 +1,6 @@
 %define name clutter
 %define version 0.9.3
-%define git 20090602
+%define git 20090616
 %if %git
 %define release %mkrel 0.%git.1
 %else
@@ -21,7 +21,6 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
-Patch:	clutter-remove-double-header.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -31,7 +30,7 @@ BuildRequires: GL-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: gobject-introspection-devel >= 0.9.3-0.20090616
 #gw for Pango-1.0.gir
 BuildRequires: gir-repository
 BuildRequires: gtk-doc
@@ -90,7 +89,6 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
-%patch -p1
 
 %build
 %define _disable_ld_no_undefined 1
