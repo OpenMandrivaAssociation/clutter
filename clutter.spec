@@ -1,8 +1,8 @@
 %define name clutter
-%define version 0.9.6
+%define version 0.9.8
 %define git 0
 %if %git
-%define release %mkrel 0.%git.1
+%define release %mkrel 1
 %else
 %define release %mkrel 1
 %endif
