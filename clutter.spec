@@ -1,5 +1,5 @@
 %define name clutter
-%define version 0.9.8
+%define version 1.0.0
 %define git 0
 %if %git
 %define release %mkrel 1
@@ -7,7 +7,7 @@
 %define release %mkrel 1
 %endif
 
-%define api 0.9
+%define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedevel %mklibname -d %name %api
