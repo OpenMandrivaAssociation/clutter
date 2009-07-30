@@ -49,7 +49,7 @@ API is intended to be easy to use, efficient and flexible.
 
 %package -n %libname
 Summary:       Software library for fast, visually rich GUIs
-Group:         Graphics
+Group:         System/Libraries
 
 %description -n %libname
 Clutter is an open source software library for creating fast, visually rich
