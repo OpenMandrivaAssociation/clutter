@@ -4,7 +4,7 @@
 %if %git
 %define release %mkrel 1
 %else
-%define release %mkrel 1
+%define release %mkrel 2
 %endif
 
 %define api 1.0
@@ -108,6 +108,9 @@ rm -rf %buildroot
 %files -n %libname
 %defattr(-,root,root)
 %_libdir/lib%{name}-glx-%{api}.so.*
+%_libdir/girepository-1.0/Clutter-%api.typelib
+%_libdir/girepository-1.0/ClutterJson-%api.typelib
+%_libdir/girepository-1.0/Cogl-%api.typelib
 
 %files -n %libnamedevel
 %_libdir/pkgconfig/cogl-%{api}.pc
@@ -123,9 +126,6 @@ rm -rf %buildroot
 %_datadir/gir-1.0/Clutter-%api.gir
 %_datadir/gir-1.0/ClutterJson-%api.gir
 %_datadir/gir-1.0/Cogl-%api.gir
-%_libdir/girepository-1.0/Clutter-%api.typelib
-%_libdir/girepository-1.0/ClutterJson-%api.typelib
-%_libdir/girepository-1.0/Cogl-%api.typelib
 %dir %_datadir/gtk-doc/html/%name
 %doc %_datadir/gtk-doc/html/%name/*
 %dir %_datadir/gtk-doc/html/cogl
