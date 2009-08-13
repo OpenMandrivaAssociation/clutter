@@ -34,6 +34,7 @@ BuildRequires: gobject-introspection-devel >= 0.6.3-0.20090616
 #gw for Pango-1.0.gir
 BuildRequires: gir-repository
 BuildRequires: gtk-doc
+BuildRequires: docbook-dtd421-xml
 BuildConflicts: %{name}-devel < %{version}
 
 %description
