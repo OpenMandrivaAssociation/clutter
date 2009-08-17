@@ -1,10 +1,10 @@
 %define name clutter
 %define version 1.0.2
 %define git 0
-%if %git
-%define release %mkrel 1
+%if ! %git
+%define release %mkrel 3
 %else
-%define release %mkrel 2
+%define release %mkrel 0.%git.1
 %endif
 
 %define api 1.0
@@ -21,6 +21,7 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
+Patch:	clutter-1.0.2-gobject-introspection-fix.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -30,7 +31,7 @@ BuildRequires: GL-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
-BuildRequires: gobject-introspection-devel >= 0.6.3-0.20090616
+BuildRequires: gobject-introspection-devel >= 0.6.4
 #gw for Pango-1.0.gir
 BuildRequires: gir-repository
 BuildRequires: gtk-doc
@@ -90,6 +91,8 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
+%patch -p1
+autoreconf -fi
 
 %build
 %define _disable_ld_no_undefined 1
