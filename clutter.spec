@@ -91,7 +91,7 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
-%patch -p1
+%patch -p1 -b .new-gobject-introspection
 autoreconf -fi
 
 %build
