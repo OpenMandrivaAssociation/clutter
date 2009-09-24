@@ -1,8 +1,8 @@
 %define name clutter
-%define version 1.0.2
+%define version 1.0.6
 %define git 0
 %if ! %git
-%define release %mkrel 4
+%define release %mkrel 1
 %else
 %define release %mkrel 0.%git.1
 %endif
@@ -21,7 +21,6 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
-Patch:	clutter-1.0.2-gobject-introspection-fix.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -32,11 +31,8 @@ BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
 BuildRequires: gobject-introspection-devel >= 0.6.4
-#gw for Pango-1.0.gir
-BuildRequires: gir-repository
 BuildRequires: gtk-doc
 BuildRequires: docbook-dtd412-xml
-BuildConflicts: %{name}-devel < %{version}
 
 %description
 Clutter is an open source software library for creating fast, visually rich
@@ -91,15 +87,11 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
-%patch -p1 -b .new-gobject-introspection
-autoreconf -fi
 
 %build
-%define _disable_ld_no_undefined 1
-%define _disable_ld_as_needed 1
 %configure2_5x --enable-gtk-doc
 #git from 20090602 does not work with parallel make
-make
+%make
 
 %install
 rm -rf %buildroot
