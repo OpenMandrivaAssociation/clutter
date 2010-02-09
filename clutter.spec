@@ -21,6 +21,8 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/%api/%{name}-%{version}.tar.bz2
 %endif
+#gw from git, fix build on 64 bit
+Patch: clutter-fix-types.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -88,6 +90,7 @@ Development headers/libraries for %name (see %libname package)
 %else
 %setup -q
 %endif
+%apply_patches
 
 %build
 %configure2_5x --enable-gtk-doc
