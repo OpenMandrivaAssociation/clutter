@@ -1,10 +1,10 @@
 %define name clutter
-%define version 1.0.10
+%define version 1.1.10
 %define git 0
 %if ! %git
 %define release %mkrel 1
 %else
-%define release %mkrel 0.%git.1
+%define release %mkrel -c %git 1
 %endif
 
 %define api 1.0
@@ -30,6 +30,7 @@ BuildRequires: GL-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
+BuildRequires: libjson-glib-devel
 BuildRequires: gobject-introspection-devel >= 0.6.4
 BuildRequires: gtk-doc
 BuildRequires: docbook-dtd412-xml
@@ -105,7 +106,6 @@ rm -rf %buildroot
 %defattr(-,root,root)
 %_libdir/lib%{name}-glx-%{api}.so.*
 %_libdir/girepository-1.0/Clutter-%api.typelib
-%_libdir/girepository-1.0/ClutterJson-%api.typelib
 %_libdir/girepository-1.0/Cogl-%api.typelib
 
 %files -n %libnamedevel
@@ -120,7 +120,6 @@ rm -rf %buildroot
 %_includedir/%{name}-%{api}/%{name}
 %_includedir/%{name}-%{api}/cogl
 %_datadir/gir-1.0/Clutter-%api.gir
-%_datadir/gir-1.0/ClutterJson-%api.gir
 %_datadir/gir-1.0/Cogl-%api.gir
 %dir %_datadir/gtk-doc/html/%name
 %doc %_datadir/gtk-doc/html/%name/*
