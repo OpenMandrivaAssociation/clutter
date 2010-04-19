@@ -1,8 +1,8 @@
 %define name clutter
-%define version 1.2.4
+%define version 1.2.6
 %define git 0
 %if ! %git
-%define release %mkrel 2
+%define release %mkrel 1
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -21,8 +21,6 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/1.2/%{name}-%{version}.tar.bz2
 %endif
-# (fc) 1.2.4-2mdv fix actor allocation (oh bug #2024)
-Patch0:        clutter-1.2.4-actor-allocation.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
