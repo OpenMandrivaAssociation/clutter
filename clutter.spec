@@ -21,6 +21,7 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/1.3/%{name}-%{version}.tar.bz2
 %endif
+Patch0: clutter-1.3.8-fix-gir-build.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -94,6 +95,7 @@ Development headers/libraries for %name (see %libname package)
 %setup -q
 %endif
 %apply_patches
+autoreconf -fi
 
 %build
 %configure2_5x --enable-gtk-doc
