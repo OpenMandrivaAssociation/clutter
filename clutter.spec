@@ -1,8 +1,8 @@
 %define name clutter
-%define version 1.2.12
+%define version 1.3.8
 %define git 0
 %if ! %git
-%define release %mkrel 2
+%define release %mkrel 1
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -19,7 +19,7 @@ Release:       %{release}
 %if %git
 Source0:       %{name}-%{git}.tar.bz2
 %else
-Source0:       http://www.clutter-project.org/sources/clutter/1.2/%{name}-%{version}.tar.bz2
+Source0:       http://www.clutter-project.org/sources/clutter/1.3/%{name}-%{version}.tar.bz2
 %endif
 License:       LGPLv2+
 Group:         Graphics
@@ -31,6 +31,7 @@ BuildRequires: libxcomposite-devel
 BuildRequires: libxdamage-devel
 BuildRequires: libxfixes-devel
 BuildRequires: GL-devel
+BuildRequires: atk-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
@@ -110,10 +111,12 @@ rm -rf %buildroot
 %files -n %libname
 %defattr(-,root,root)
 %_libdir/lib%{name}-glx-%{api}.so.*
+%_libdir/girepository-1.0/Cally-%api.typelib
 %_libdir/girepository-1.0/Clutter-%api.typelib
 %_libdir/girepository-1.0/Cogl-%api.typelib
 
 %files -n %libnamedevel
+%_libdir/pkgconfig/cally-%{api}.pc
 %_libdir/pkgconfig/cogl-%{api}.pc
 %_libdir/pkgconfig/cogl-gl-%{api}.pc
 %_libdir/pkgconfig/%{name}-%{api}.pc
@@ -122,11 +125,12 @@ rm -rf %buildroot
 %_libdir/lib%{name}-glx-%{api}.la
 %_libdir/lib%{name}-glx-%{api}.so
 %dir %_includedir/%{name}-%{api}
+%_includedir/%{name}-%{api}/cally
 %_includedir/%{name}-%{api}/%{name}
 %_includedir/%{name}-%{api}/cogl
+%_datadir/gir-1.0/Cally-%api.gir
 %_datadir/gir-1.0/Clutter-%api.gir
 %_datadir/gir-1.0/Cogl-%api.gir
-%dir %_datadir/gtk-doc/html/%name
-%doc %_datadir/gtk-doc/html/%name/*
-%dir %_datadir/gtk-doc/html/cogl
-%doc %_datadir/gtk-doc/html/cogl/*
+%_datadir/gtk-doc/html/cally
+%_datadir/gtk-doc/html/%name
+%_datadir/gtk-doc/html/cogl
