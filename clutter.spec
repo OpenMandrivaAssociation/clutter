@@ -2,7 +2,7 @@
 %define version 1.2.12
 %define git 0
 %if ! %git
-%define release %mkrel 1
+%define release %mkrel 2
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -25,7 +25,11 @@ License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: X11-devel
+BuildRequires: libx11-devel
+BuildRequires: libxext-devel
+BuildRequires: libxcomposite-devel
+BuildRequires: libxdamage-devel
+BuildRequires: libxfixes-devel
 BuildRequires: GL-devel
 BuildRequires: pango-devel
 BuildRequires: glib2-devel
