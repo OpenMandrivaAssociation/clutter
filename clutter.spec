@@ -2,7 +2,7 @@
 %define version 1.3.8
 %define git 0
 %if ! %git
-%define release %mkrel 1
+%define release %mkrel 2
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -118,6 +118,7 @@ rm -rf %buildroot
 %_libdir/girepository-1.0/Cogl-%api.typelib
 
 %files -n %libnamedevel
+%defattr(-,root,root)
 %_libdir/pkgconfig/cally-%{api}.pc
 %_libdir/pkgconfig/cogl-%{api}.pc
 %_libdir/pkgconfig/cogl-gl-%{api}.pc
