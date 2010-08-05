@@ -53,6 +53,7 @@ API is intended to be easy to use, efficient and flexible.
 
 %package i18n
 Summary: Translations for %name
+Group: System/Internationalization
 
 %description i18n
 This contains the translation data for %name.
