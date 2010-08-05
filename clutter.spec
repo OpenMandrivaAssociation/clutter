@@ -1,8 +1,8 @@
 %define name clutter
-%define version 1.3.8
+%define version 1.3.10
 %define git 0
 %if ! %git
-%define release %mkrel 2
+%define release %mkrel 1
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -21,7 +21,6 @@ Source0:       %{name}-%{git}.tar.bz2
 %else
 Source0:       http://www.clutter-project.org/sources/clutter/1.3/%{name}-%{version}.tar.bz2
 %endif
-Patch0: clutter-1.3.8-fix-gir-build.patch
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -52,9 +51,16 @@ API is intended to be easy to use, efficient and flexible.
 
 #----------------------------------------------------------------------------
 
+%package i18n
+Summary: Translations for %name
+
+%description i18n
+This contains the translation data for %name.
+
 %package -n %libname
 Summary:       Software library for fast, visually rich GUIs
 Group:         System/Libraries
+Requires: %name-i18n >= %name
 
 %description -n %libname
 Clutter is an open source software library for creating fast, visually rich
@@ -64,15 +70,6 @@ media center type applications. We hope however it can be used for a lot more.
 Clutter uses OpenGL (and soon optionally OpenGL ES) for rendering but with an
 API which hides the underlying GL complexity from the developer. The Clutter
 API is intended to be easy to use, efficient and flexible. 
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-
-%postun -n %libname
-%if %mdkversion < 200900
-/sbin/ldconfig
-%endif
 
 #----------------------------------------------------------------------------
 
@@ -106,9 +103,12 @@ autoreconf -fi
 rm -rf %buildroot
 
 %makeinstall_std
+%find_lang %name-%api
 
 %clean
 rm -rf %buildroot
+
+%files i18n -f %name-%api.lang
 
 %files -n %libname
 %defattr(-,root,root)
