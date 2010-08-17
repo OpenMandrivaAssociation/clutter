@@ -1,5 +1,5 @@
 %define name clutter
-%define version 1.3.10
+%define version 1.3.12
 %define git 0
 %if ! %git
 %define release %mkrel 1
