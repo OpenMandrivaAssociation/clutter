@@ -2,7 +2,7 @@
 %define version 1.3.12
 %define git 0
 %if ! %git
-%define release %mkrel 1
+%define release %mkrel 2
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -61,7 +61,7 @@ This contains the translation data for %name.
 %package -n %libname
 Summary:       Software library for fast, visually rich GUIs
 Group:         System/Libraries
-Requires: %name-i18n >= %name
+Requires: %name-i18n >= %version
 
 %description -n %libname
 Clutter is an open source software library for creating fast, visually rich
