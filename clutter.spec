@@ -40,6 +40,8 @@ BuildRequires: gobject-introspection-devel >= 0.6.4
 BuildRequires: gtk-doc
 BuildRequires: docbook-dtd412-xml
 BuildRequires: x11-server-xvfb
+#gw needed by autoreconf
+#BuildRequires: gettext-devel
 
 %description
 Clutter is an open source software library for creating fast, visually rich
@@ -94,7 +96,7 @@ Development headers/libraries for %name (see %libname package)
 %setup -q
 %endif
 %apply_patches
-autoreconf -fi
+#autoreconf -fi
 
 %build
 %configure2_5x --enable-gtk-doc
