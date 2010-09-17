@@ -1,8 +1,8 @@
 %define name clutter
-%define version 1.3.12
+%define version 1.3.14
 %define git 0
 %if ! %git
-%define release %mkrel 3
+%define release %mkrel 1
 %else
 %define release %mkrel -c %git 1
 %endif
@@ -39,6 +39,7 @@ BuildRequires: libjson-glib-devel
 BuildRequires: gobject-introspection-devel >= 0.6.4
 BuildRequires: gtk-doc
 BuildRequires: docbook-dtd412-xml
+BuildRequires: x11-server-xvfb
 
 %description
 Clutter is an open source software library for creating fast, visually rich
@@ -98,7 +99,7 @@ autoreconf -fi
 %build
 %configure2_5x --enable-gtk-doc
 #git from 20090602 does not work with parallel make
-%make
+xvfb-run %make
 
 %install
 rm -rf %buildroot
@@ -116,6 +117,7 @@ rm -rf %buildroot
 %_libdir/lib%{name}-glx-%{api}.so.*
 %_libdir/girepository-1.0/Cally-%api.typelib
 %_libdir/girepository-1.0/Clutter-%api.typelib
+%_libdir/girepository-1.0/ClutterX11-%api.typelib
 %_libdir/girepository-1.0/Cogl-%api.typelib
 
 %files -n %libnamedevel
@@ -134,6 +136,7 @@ rm -rf %buildroot
 %_includedir/%{name}-%{api}/cogl
 %_datadir/gir-1.0/Cally-%api.gir
 %_datadir/gir-1.0/Clutter-%api.gir
+%_datadir/gir-1.0/ClutterX11-%api.gir
 %_datadir/gir-1.0/Cogl-%api.gir
 %_datadir/gtk-doc/html/cally
 %_datadir/gtk-doc/html/%name
