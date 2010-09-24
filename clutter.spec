@@ -1,10 +1,11 @@
 %define name clutter
-%define version 1.3.14
+%define version 1.4.0
 %define git 0
+%define rel 1
 %if ! %git
-%define release %mkrel 1
+%define release %mkrel %rel
 %else
-%define release %mkrel -c %git 1
+%define release %mkrel -c %git %rel
 %endif
 
 %define api 1.0
@@ -19,7 +20,7 @@ Release:       %{release}
 %if %git
 Source0:       %{name}-%{git}.tar.bz2
 %else
-Source0:       http://www.clutter-project.org/sources/clutter/1.3/%{name}-%{version}.tar.bz2
+Source0:       http://www.clutter-project.org/sources/clutter/1.4/%{name}-%{version}.tar.bz2
 %endif
 License:       LGPLv2+
 Group:         Graphics
