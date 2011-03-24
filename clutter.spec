@@ -1,12 +1,6 @@
 %define name clutter
 %define version 1.6.8
-%define git 0
 %define rel 1
-%if ! %git
-%define release %mkrel %rel
-%else
-%define release %mkrel -c %git %rel
-%endif
 
 %define api 1.0
 %define major 0
@@ -16,12 +10,8 @@
 Summary:       Software library for fast, visually rich GUIs
 Name:          %{name}
 Version:       %{version}
-Release:       %{release}
-%if %git
-Source0:       %{name}-%{git}.tar.bz2
-%else
+Release:       %mkrel 1
 Source0:       http://www.clutter-project.org/sources/clutter/1.4/%{name}-%{version}.tar.bz2
-%endif
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
@@ -88,14 +78,8 @@ Development headers/libraries for %name (see %libname package)
 #----------------------------------------------------------------------------
 
 %prep
-%if %git
-%setup -q -n %name
-./autogen.sh -V
-%else
 %setup -q
-%endif
 %apply_patches
-#autoreconf -fi
 
 %build
 %configure2_5x --enable-gtk-doc
