@@ -1,5 +1,5 @@
 %define name clutter
-%define version 1.4.0
+%define version 1.6.8
 %define git 0
 %define rel 1
 %if ! %git
@@ -28,21 +28,19 @@ Url:           http://clutter-project.org/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: libx11-devel
 BuildRequires: libxext-devel
-BuildRequires: libxcomposite-devel
+BuildRequires: libxcomposite-devel >= 0.4
 BuildRequires: libxdamage-devel
-BuildRequires: libxfixes-devel
+BuildRequires: libxfixes-devel >= 3
 BuildRequires: GL-devel
-BuildRequires: atk-devel
-BuildRequires: pango-devel
-BuildRequires: glib2-devel
-BuildRequires: libgdk_pixbuf2.0-devel
-BuildRequires: libjson-glib-devel
-BuildRequires: gobject-introspection-devel >= 0.6.4
+BuildRequires: atk-devel >= 1.17
+BuildRequires: pango-devel >= 1.20
+BuildRequires: glib2-devel >= 2.26.0
+BuildRequires: libgdk_pixbuf2.0-devel >=2.0
+BuildRequires: libjson-glib-devel >= 0.12.0
+BuildRequires: gobject-introspection-devel >= 0.9.5
 BuildRequires: gtk-doc
 BuildRequires: docbook-dtd412-xml
 BuildRequires: x11-server-xvfb
-#gw needed by autoreconf
-#BuildRequires: gettext-devel
 
 %description
 Clutter is an open source software library for creating fast, visually rich
