@@ -1,5 +1,5 @@
 %define name clutter
-%define version 1.6.8
+%define version 1.6.10
 %define rel 1
 
 %define api 1.0
@@ -11,7 +11,7 @@ Summary:       Software library for fast, visually rich GUIs
 Name:          %{name}
 Version:       %{version}
 Release:       %mkrel 1
-Source0:       http://www.clutter-project.org/sources/clutter/1.4/%{name}-%{version}.tar.bz2
+Source0:       http://www.clutter-project.org/sources/clutter/1.6/%{name}-%{version}.tar.bz2
 License:       LGPLv2+
 Group:         Graphics
 Url:           http://clutter-project.org/
