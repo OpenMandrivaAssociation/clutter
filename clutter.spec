@@ -25,7 +25,7 @@ BuildRequires: GL-devel
 BuildRequires: atk-devel >= 1.17
 BuildRequires: pango-devel >= 1.20
 BuildRequires: glib2-devel >= 2.26.0
-BuildRequires: libgdk_pixbuf2.0-devel >=2.0
+BuildRequires: libgdk_pixbuf2.0-devel >= 2.0
 BuildRequires: libjson-glib-devel >= 0.12.0
 BuildRequires: gobject-introspection-devel >= 0.9.5
 BuildRequires: gtk-doc
