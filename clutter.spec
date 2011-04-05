@@ -1,5 +1,5 @@
 %define name clutter
-%define version 1.6.12
+%define version 1.6.14
 %define rel 1
 
 %define api 1.0
