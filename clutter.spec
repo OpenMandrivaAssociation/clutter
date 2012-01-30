@@ -8,7 +8,7 @@
 
 Summary:       Software library for fast, visually rich GUIs
 Name:          clutter
-Version:       1.8.2
+Version:       1.8.4
 Release:       1
 License:       LGPLv2+
 Group:         Graphics
