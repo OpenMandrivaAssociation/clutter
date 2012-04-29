@@ -83,7 +83,7 @@ Development headers/libraries for %{name} (see %{libname} package)
 %configure2_5x \
 	--disable-static \
 	--disable-rpath \
-	--enable-introspection=yes
+	--enable-introspection=yes \
 	--enable-gdk-backend=yes \
 	--enable-x11-backend=yes
 
