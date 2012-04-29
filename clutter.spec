@@ -97,6 +97,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files i18n -f %{name}-%{api}.lang
 
 %files -n %{libname}
+%{_libdir}/lib%{name}-%{api}.so.%{major}*
 %{_libdir}/lib%{name}-glx-%{api}.so.%{major}*
 
 %files -n %{girname}
@@ -106,17 +107,20 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/girepository-1.0/ClutterX11-%{api}.typelib
 
 %files -n %{develname}
-%{_libdir}/pkgconfig/cally-%{api}.pc
-%{_libdir}/pkgconfig/%{name}-%{api}.pc
-%{_libdir}/pkgconfig/%{name}-cogl-%{api}.pc
-%{_libdir}/pkgconfig/%{name}-glx-%{api}.pc
-%{_libdir}/pkgconfig/%{name}-x11-%{api}.pc
-%{_libdir}/lib%{name}-glx-%{api}.so
 %dir %{_includedir}/%{name}-%{api}
 %{_includedir}/%{name}-%{api}/cally
 %{_includedir}/%{name}-%{api}/%{name}
+%{_libdir}/lib%{name}-%{api}.so
+%{_libdir}/lib%{name}-glx-%{api}.so
+%{_libdir}/pkgconfig/cally-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-cogl-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-gdk-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-glx-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-x11-%{api}.pc
 %{_datadir}/gir-1.0/Cally-%{api}.gir
 %{_datadir}/gir-1.0/Clutter-%{api}.gir
+%{_datadir}/gir-1.0/ClutterGdk-%{girmajor}.gir
 %{_datadir}/gir-1.0/ClutterX11-%{api}.gir
 %{_datadir}/gtk-doc/html/cally
 %{_datadir}/gtk-doc/html/%{name}
