@@ -6,14 +6,14 @@
 %define girname		%mklibname %{name}-gir %{girmajor}
 %define develname	%mklibname -d %{name} %{api}
 
-Summary:       Software library for fast, visually rich GUIs
-Name:          clutter
-Version:       1.12.2
-Release:       1
-License:       LGPLv2+
-Group:         Graphics
-Url:           http://clutter-project.org/
-Source0:       ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/1.12/%{name}-%{version}.tar.xz
+Summary:	Software library for fast, visually rich GUIs
+Name:		clutter
+Version:	1.12.2
+Release:	2
+License:	LGPLv2+
+Group:		Graphics
+Url:		http://clutter-project.org/
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/1.12/%{name}-%{version}.tar.xz
 
 BuildRequires:	pkgconfig(atk)
 BuildRequires:	pkgconfig(cairo-gobject)
@@ -43,8 +43,8 @@ API which hides the underlying GL complexity from the developer. The Clutter
 API is intended to be easy to use, efficient and flexible. 
 
 %package i18n
-Summary: Translations for %{name}
-Group: System/Internationalization
+Summary:	Translations for %{name}
+Group:		System/Internationalization
 
 %description i18n
 This contains the translation data for %{name}.
