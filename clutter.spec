@@ -8,12 +8,12 @@
 
 Summary:	Software library for fast, visually rich GUIs
 Name:		clutter
-Version:	1.12.2
-Release:	2
+Version:	1.13.6
+Release:	1
 License:	LGPLv2+
 Group:		Graphics
 Url:		http://clutter-project.org/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/clutter/%{url_ver}}/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/clutter/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	pkgconfig(atk)
 BuildRequires:	pkgconfig(cairo-gobject)
