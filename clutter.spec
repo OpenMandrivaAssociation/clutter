@@ -8,8 +8,8 @@
 
 Summary:	Software library for fast, visually rich GUIs
 Name:		clutter
-Version:	1.14.4
-Release:	7
+Version:	1.20.0
+Release:	1
 License:	LGPLv2+
 Group:		Graphics
 Url:		http://clutter-project.org/
@@ -19,6 +19,7 @@ BuildRequires:	pkgconfig(atk)
 BuildRequires:	pkgconfig(cairo-gobject)
 BuildRequires:	pkgconfig(cogl-1.0)
 BuildRequires:	pkgconfig(cogl-pango-1.0)
+BuildRequires:	pkgconfig(cogl-path-1.0)
 BuildRequires:	pkgconfig(gdk-3.0)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glib-2.0)
@@ -79,7 +80,7 @@ Development headers/libraries for %{name} (see %{libname} package)
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--disable-rpath \
 	--enable-introspection=yes \
