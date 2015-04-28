@@ -8,7 +8,7 @@
 
 Summary:	Software library for fast, visually rich GUIs
 Name:		clutter
-Version:	1.20.0
+Version:	 1.22.0
 Release:	2
 License:	LGPLv2+
 Group:		Graphics
@@ -41,7 +41,7 @@ media center type applications. We hope however it can be used for a lot more.
 
 Clutter uses OpenGL (and soon optionally OpenGL ES) for rendering but with an
 API which hides the underlying GL complexity from the developer. The Clutter
-API is intended to be easy to use, efficient and flexible. 
+API is intended to be easy to use, efficient and flexible.
 
 %package i18n
 Summary:	Translations for %{name}
