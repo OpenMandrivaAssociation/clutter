@@ -2,5 +2,6 @@ removed_sources:
   clutter-1.12.2.tar.xz: 13bf5c37043724ce66685b964a83bd112d830550
   clutter-1.14.4.tar.xz: 57f87cacb2d0133656e627e16eefaa6150b4a4a2
   clutter-1.20.0.tar.xz: 9939b90268e44c5500f44f3b11665eafabe8193e
-sources:
   clutter-1.22.0.tar.xz: 06ac8bd3c376698794d4d4a186e0e4aa8cae8871
+sources:
+  clutter-1.24.0.tar.xz: d79fbe2fbbae0583b6c33c6297a8a34436b95542
