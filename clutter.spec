@@ -122,6 +122,5 @@ Development headers/libraries for %{name} (see %{libname} package)
 %{_datadir}/gir-1.0/Clutter-%{api}.gir
 %{_datadir}/gir-1.0/ClutterGdk-%{api}.gir
 %{_datadir}/gir-1.0/ClutterX11-%{api}.gir
-%{_datadir}/gtk-doc/html/cally
 %{_datadir}/gtk-doc/html/%{name}
 
