@@ -8,7 +8,7 @@
 
 Summary:	Software library for fast, visually rich GUIs
 Name:		clutter
-Version:	1.24.2
+Version:	1.26.2
 Release:	1
 License:	LGPLv2+
 Group:		Graphics
@@ -117,10 +117,11 @@ Development headers/libraries for %{name} (see %{libname} package)
 %{_libdir}/pkgconfig/%{name}-cogl-%{api}.pc
 %{_libdir}/pkgconfig/%{name}-gdk-%{api}.pc
 %{_libdir}/pkgconfig/%{name}-glx-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-egl-%{api}.pc
 %{_libdir}/pkgconfig/%{name}-x11-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-wayland-%{api}.pc
 %{_datadir}/gir-1.0/Cally-%{api}.gir
 %{_datadir}/gir-1.0/Clutter-%{api}.gir
 %{_datadir}/gir-1.0/ClutterGdk-%{api}.gir
 %{_datadir}/gir-1.0/ClutterX11-%{api}.gir
 %{_datadir}/gtk-doc/html/%{name}
-
