@@ -77,7 +77,7 @@ Development headers/libraries for %{name} (see %{libname} package)
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %configure \
