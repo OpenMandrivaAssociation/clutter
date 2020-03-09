@@ -1,3 +1,6 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 %define api	1.0
@@ -81,8 +84,8 @@ Development headers/libraries for %{name} (see %{libname} package)
 %autopatch -p1
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %configure \
 	--disable-static \
 	--disable-rpath \
