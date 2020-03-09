@@ -1,3 +1,11 @@
+# Need disable LTO and use GCC or error appear:
+#Invalid GType function: 'clutter_point_get_type'
+#Failed to find symbol 'clutter_point_get_type'
+#Upstream not interested in fixing: https://gitlab.gnome.org/GNOME/clutter/issues/5
+
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 %define api	1.0
@@ -8,8 +16,8 @@
 
 Summary:	Software library for fast, visually rich GUIs
 Name:		clutter
-Version:	1.26.2
-Release:	3
+Version:	1.26.4
+Release:	1
 License:	LGPLv2+
 Group:		Graphics
 Url:		http://clutter-project.org/
@@ -33,6 +41,7 @@ BuildRequires:	pkgconfig(xdamage)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(xi)
+BuildRequires:	egl-devel
 
 %description
 Clutter is an open source software library for creating fast, visually rich
@@ -80,6 +89,8 @@ Development headers/libraries for %{name} (see %{libname} package)
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 %configure \
 	--disable-static \
 	--disable-rpath \
@@ -87,10 +98,10 @@ Development headers/libraries for %{name} (see %{libname} package)
 	--enable-gdk-backend=yes \
 	--enable-x11-backend=yes
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %find_lang %{name}-%{api}
 
@@ -125,3 +136,4 @@ Development headers/libraries for %{name} (see %{libname} package)
 %{_datadir}/gir-1.0/ClutterGdk-%{api}.gir
 %{_datadir}/gir-1.0/ClutterX11-%{api}.gir
 %{_datadir}/gtk-doc/html/%{name}
+%{_datadir}/clutter-1.0/valgrind/clutter.supp
