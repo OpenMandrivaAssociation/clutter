@@ -8,8 +8,8 @@
 
 Summary:	Software library for fast, visually rich GUIs
 Name:		clutter
-Version:	1.26.2
-Release:	3
+Version:	1.26.4
+Release:	1
 License:	LGPLv2+
 Group:		Graphics
 Url:		http://clutter-project.org/
@@ -87,10 +87,10 @@ Development headers/libraries for %{name} (see %{libname} package)
 	--enable-gdk-backend=yes \
 	--enable-x11-backend=yes
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %find_lang %{name}-%{api}
 
