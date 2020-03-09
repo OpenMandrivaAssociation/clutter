@@ -1,3 +1,8 @@
+# Need disable LTO and use GCC or error appear:
+#Invalid GType function: 'clutter_point_get_type'
+#Failed to find symbol 'clutter_point_get_type'
+#Upstream not interested in fixing: https://gitlab.gnome.org/GNOME/clutter/issues/5
+
 %define _disable_ld_no_undefined 1
 %define _disable_lto 1
 
@@ -131,3 +136,4 @@ export CXX=g++
 %{_datadir}/gir-1.0/ClutterGdk-%{api}.gir
 %{_datadir}/gir-1.0/ClutterX11-%{api}.gir
 %{_datadir}/gtk-doc/html/%{name}
+%{_datadir}/clutter-1.0/valgrind/clutter.supp
