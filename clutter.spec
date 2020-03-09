@@ -84,8 +84,8 @@ Development headers/libraries for %{name} (see %{libname} package)
 %autopatch -p1
 
 %build
-#export CC=gcc
-#export CXX=g++
+export CC=gcc
+export CXX=g++
 %configure \
 	--disable-static \
 	--disable-rpath \
