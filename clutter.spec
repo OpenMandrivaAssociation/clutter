@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig(xdamage)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(xi)
+BuildRequires:	egl-devel
 
 %description
 Clutter is an open source software library for creating fast, visually rich
