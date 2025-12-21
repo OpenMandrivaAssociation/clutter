@@ -23,6 +23,11 @@ Group:		Graphics
 Url:		https://clutter-project.org/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/clutter/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(atk)
 BuildRequires:	pkgconfig(cairo-gobject)
 BuildRequires:	pkgconfig(cogl-1.0)
